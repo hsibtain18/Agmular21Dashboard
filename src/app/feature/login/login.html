@@ -1,0 +1,115 @@
+<div
+  class="min-h-screen bg-slate-950 flex items-center justify-center px-4 py-10"
+>
+  <div class="w-full max-w-md">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-white">Pulse</h1>
+      <p class="text-slate-400 mt-2">
+        Team Operations Dashboard
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div
+      class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl"
+    >
+      <div class="mb-6">
+        <h2 class="text-2xl font-semibold text-white">
+          Welcome Back
+        </h2>
+        <p class="text-slate-400 text-sm mt-1">
+          Sign in to continue
+        </p>
+      </div>
+
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="space-y-5"
+      >
+        <!-- Email -->
+        <div>
+          <label
+            class="block text-sm font-medium text-slate-300 mb-2"
+          >
+            Email
+          </label>
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="john@example.com"
+            class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white outline-none transition focus:border-blue-500"
+          />
+
+          @if (email.touched && email.invalid) {
+          <p class="text-red-400 text-sm mt-1">
+            Please enter a valid email.
+          </p>
+          }
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label
+            class="block text-sm font-medium text-slate-300 mb-2"
+          >
+            Password
+          </label>
+
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="••••••••"
+            class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white outline-none transition focus:border-blue-500"
+          />
+
+          @if (password.touched && password.invalid) {
+          <p class="text-red-400 text-sm mt-1">
+            Password must be at least 6 characters.
+          </p>
+          }
+        </div>
+
+        <!-- Remember -->
+        <div class="flex items-center justify-between">
+          <label class="flex items-center gap-2">
+            <input
+              type="checkbox"
+              class="rounded border-slate-700 bg-slate-800"
+            />
+            <span class="text-sm text-slate-400">
+              Remember me
+            </span>
+          </label>
+
+          <a
+            href="#"
+            class="text-sm text-blue-400 hover:text-blue-300"
+          >
+            Forgot Password?
+          </a>
+        </div>
+
+        <!-- Button -->
+        <button
+          type="submit"
+          [disabled]="loading()"
+          class="w-full rounded-lg bg-blue-600 py-3 font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
+        >
+          @if (loading()) {
+          <span>Signing In...</span>
+          } @else {
+          <span>Sign In</span>
+          }
+        </button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <p class="text-center text-sm text-slate-500 mt-6">
+      Built with Angular 21+, Signals & SSR
+    </p>
+  </div>
+</div>
